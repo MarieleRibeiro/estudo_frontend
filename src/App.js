@@ -46,5 +46,6 @@ export default App;
  * 3 CONCEITOS MAIS IMPORTANTES DO REACT
  * => Componente
  * => Propriedades = é alguma informação que podemos passar de componente Pai para um componente Filho
+<<
  * => Estado & imutabilidade (useState=> utilizar estado )
- */
+*/
