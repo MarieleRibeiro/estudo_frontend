@@ -30,10 +30,19 @@ function App() {
     });
   }, []);
 
-  function handleAddproject() {
+  async function handleAddproject() {
     // projects.push(`Novo pojeto ${Date.now()}`) (metodo push altera o valor original não cria um novo array com a nova informação)
 
-    setProjects([...projects, `Novo pojeto ${Date.now()}`]);
+    //  setProjects([...projects, `Novo pojeto ${Date.now()}`]);
+
+    const response = await api.post('projects', {
+      title: `Novo pojeto ${Date.now()}`,
+      owner: "Mariele Ribeiro"
+    });
+
+    const projects = response.data;
+
+    setProjects([...projects, project]);
 
   }
 
