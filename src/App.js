@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import api from './services/api';
+
 import Header from './components/Header'
 import './App.css';
+
 
 import backgroundImage from './assets/background.jpg'
 
@@ -13,7 +16,7 @@ import backgroundImage from './assets/background.jpg'
 
 
 function App() {
-  const [projects, setProjects] = useState(['Desenvolvimento de app', 'Front-end web'])
+  const [projects, setProjects] = useState([]);
 
   /**
         useState retorna um array com 2 posições
@@ -21,6 +24,11 @@ function App() {
         => 2. Função para atualizarmos esse valor
    */
 
+  useEffect(() => {
+    api.get('projects').then(response => {
+      setProjects(response.data);
+    });
+  }, []);
 
   function handleAddproject() {
     // projects.push(`Novo pojeto ${Date.now()}`) (metodo push altera o valor original não cria um novo array com a nova informação)
@@ -36,7 +44,7 @@ function App() {
       <img width={200} src={backgroundImage} />
 
       <ul>
-        {projects.map(project => <li key={project}>{project}</li>)}
+        {projects.map(project => <li key={project.id}>{project.title}</li>)}
       </ul>
 
       <button type="button" onClick={handleAddproject}>Adicionar novo projeto</button>
