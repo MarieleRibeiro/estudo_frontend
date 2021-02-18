@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import Header from './components/Header'
+import './App.css';
+
+import backgroundImage from './assets/background.jpg'
 
 /* Sempre que for criado um componente no react coloca sempre com letra maiuscula
 
@@ -29,6 +32,8 @@ function App() {
   return (
     <>
       <Header title="Projects" />
+
+      <img width={200} src={backgroundImage} />
 
       <ul>
         {projects.map(project => <li key={project}>{project}</li>)}
